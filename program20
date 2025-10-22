@@ -1,0 +1,13 @@
+import requests
+from bs4 import BeautifulSoup
+print("Batch : MCA 2023-25")
+def getdata(url):
+  r = requests.get(url)
+  return r.content
+url="https://www.w3schools.com/python/default.asp"
+htmldata = getdata(url)
+soup = BeautifulSoup(htmldata, 'html.parser')
+paragraphs = soup.find_all('p')
+print("<P> tag count:", len(paragraphs))
+for p in paragraphs:
+  print(p.get_text())
